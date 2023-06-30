@@ -1,0 +1,31 @@
+@import './theme.scss';
+
+.headerLinkWrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 10px;
+    transition: background-color 250ms;
+    width: 100%;
+    user-select: none;
+    cursor: pointer;
+    &:hover,
+    &:focus,
+    &:active {
+        background-color: Theme('slate', 300);
+    }
+    .headerLinkIcon {
+        display: flex;
+        padding:2px;
+        border-style: solid;
+        border-width: 2px;
+        border-radius: 99999px;
+    }
+    .headerLinkText {
+        display: flex;
+        padding: 2px;
+    }
+}
