@@ -51,3 +51,4 @@ const CartProvider: FC<{children: React.ReactNode}> = ({children}) => {
 };
 
 export default CartProvider;
+ 
