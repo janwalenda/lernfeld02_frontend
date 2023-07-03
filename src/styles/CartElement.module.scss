@@ -1,0 +1,19 @@
+.cartElementWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  &>div {
+    margin-bottom: .5rem;
+    margin-top: .5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    width: 100%;
+    h5{
+      display: flex;
+      flex-grow: 1;
+    }
+  }
+}
