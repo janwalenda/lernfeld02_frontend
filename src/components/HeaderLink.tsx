@@ -7,7 +7,6 @@ interface HeaderLinkOptions {
     name?: string;
     leftIcon?: React.ReactNode;
     rightIcon?: React.ReactNode;
-    tip?: string | number;
 }
 
 export function HeaderLink({ 
@@ -15,7 +14,6 @@ export function HeaderLink({
     name, 
     leftIcon, 
     rightIcon, 
-    tip 
 }: HeaderLinkOptions) {
     const nav = useNavigate();
     const location = window.location;
@@ -26,12 +24,13 @@ export function HeaderLink({
         [styles.selectedLinkWrapper]: locPath === path,
     })
 
-    const handleNavigate = () => {
+    const handleNavigate: React.MouseEventHandler<HTMLAnchorElement> = (event) => {
+        event.preventDefault();
         nav(path);
-    };
+    } 
 
     return (
-        <div className={wrapperClasses} onClick={handleNavigate}>
+        <a className={wrapperClasses} href={path} onClick={handleNavigate}>
             {leftIcon && <div className={styles.headerLinkIcon}>
                 {leftIcon}
             </div>}
@@ -40,10 +39,8 @@ export function HeaderLink({
             </div>}
             {rightIcon && <div className={styles.headerLinkIcon}>
                 {rightIcon}
-                <span className={styles.headerLinkTip}>
-                    {tip}
-                </span>
             </div>}
-        </div>
+        </a>
     );
 }
+

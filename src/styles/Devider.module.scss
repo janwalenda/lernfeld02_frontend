@@ -1,11 +1,18 @@
-.verticalDevider{
+@import './theme.scss';
+
+@mixin deviderDefaults(){
     display: flex;
-    border-left-style: solid;
-    width: 0px;
+    border: 1px solid Theme('slate', 500);
+}
+
+.verticalDevider{
+    @include deviderDefaults();
+    width: 1px;
+    height: 2rem;
 }
 
 .horizontalDevider{
-    display: flex;
-    border-bottom-style: solid;
-    width: 0px;
+    @include deviderDefaults();
+    width: 2rem;
+    height: 1px;
 }

@@ -7,4 +7,5 @@ export interface CartContextInterface {
   getFromCart: (id: number) => CartObjectInterface | undefined;
   removeFromCart: (id: number) => void;
   addToCart: (cartObject: CartObjectInterface) => void;
+  checkoutCart: () => void;
 }

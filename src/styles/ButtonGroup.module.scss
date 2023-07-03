@@ -1,0 +1,12 @@
+@import './theme.scss';
+
+.buttonGroup {
+    margin: .5rem;
+    display: flex;
+    flex-direction: row;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: Theme('slate', 200);
+    border-radius: .5rem;
+}

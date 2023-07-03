@@ -10,16 +10,6 @@ $rounded-full: 99999px;
         border-width: 2px;
         border-radius: $rounded-full;
         position: relative;
-        .headerLinkTip {
-            position:absolute;
-            border-radius: $rounded-full;
-            padding-left: 10px;
-            padding-right: 10px;
-            font-size: .8rem;
-            background-color: Theme('red', 300);
-            right: -20px;
-            top: -14px;
-        }
     }
     .headerLinkText {
         display: flex;
@@ -27,7 +17,7 @@ $rounded-full: 99999px;
     }
 }
 
-.headerLinkWrapper{
+@mixin headerLinkkDefaults(){
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -39,6 +29,12 @@ $rounded-full: 99999px;
     width: 100%;
     height: 100%;
     user-select: none;
+    text-decoration: none;
+}
+
+.headerLinkWrapper{
+    @include headerLinkkDefaults();
+    color: Theme('slate', 600);
     cursor: pointer;
     &:hover,
     &:focus,
@@ -51,16 +47,7 @@ $rounded-full: 99999px;
 .selectedLinkWrapper{
     background-color: Theme('slate', 600);
     color: Theme('slate', 200);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-direction: row;
-    padding: 5px;
-    margin: 5px;
-    border-radius: 10px;
-    width: 100%;
-    height: 100%;
-    user-select: none;
     cursor: pointer;
     @include children();
+    @include headerLinkkDefaults();
 }

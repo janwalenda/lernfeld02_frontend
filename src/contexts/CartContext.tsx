@@ -32,6 +32,10 @@ const CartProvider: FC<{children: React.ReactNode}> = ({children}) => {
     increaseID();
   }
 
+  const checkoutCart = () => {
+    setCart([]);
+  }
+
   const toggleCart = () => {
     setCartOpen(!cartOpen);
   }
@@ -44,7 +48,8 @@ const CartProvider: FC<{children: React.ReactNode}> = ({children}) => {
         toggleCart, 
         addToCart, 
         getFromCart, 
-        removeFromCart
+        removeFromCart,
+        checkoutCart
       }}>
       {children}
     </CartContext.Provider>
