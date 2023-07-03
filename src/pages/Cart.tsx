@@ -5,7 +5,7 @@ export default function Cart() {
       <>
         <Header/>
         <main>
-          Hello
+          
         </main>
         <footer>
   

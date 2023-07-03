@@ -1,0 +1,18 @@
+@import './theme.scss';
+
+@mixin deviderDefaults(){
+    display: flex;
+    border: 1px solid Theme('slate', 500);
+}
+
+.verticalDevider{
+    @include deviderDefaults();
+    width: 1px;
+    height: 2rem;
+}
+
+.horizontalDevider{
+    @include deviderDefaults();
+    width: 2rem;
+    height: 1px;
+}

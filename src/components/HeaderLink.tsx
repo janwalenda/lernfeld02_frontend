@@ -1,20 +1,36 @@
 import { useNavigate } from 'react-router-dom';
 import styles from '../styles/HeaderLink.module.scss';
+import classNames from 'classnames';
 
-export function HeaderLink({ path, name, leftIcon, rightIcon }: {
+interface HeaderLinkOptions {
     path: string;
     name?: string;
-    leftIcon?: React.ReactNode
-    rightIcon?: React.ReactNode
-}) {
-    const nav = useNavigate();
+    leftIcon?: React.ReactNode;
+    rightIcon?: React.ReactNode;
+}
 
-    const handleNavigate = () => {
+export function HeaderLink({ 
+    path, 
+    name, 
+    leftIcon, 
+    rightIcon, 
+}: HeaderLinkOptions) {
+    const nav = useNavigate();
+    const location = window.location;
+    const locPath = location.pathname;
+
+    const wrapperClasses = classNames({
+        [styles.headerLinkWrapper]: locPath !== path,
+        [styles.selectedLinkWrapper]: locPath === path,
+    })
+
+    const handleNavigate: React.MouseEventHandler<HTMLAnchorElement> = (event) => {
+        event.preventDefault();
         nav(path);
-    };
+    } 
 
     return (
-        <div className={styles.headerLinkWrapper} onClick={handleNavigate}>
+        <a className={wrapperClasses} href={path} onClick={handleNavigate}>
             {leftIcon && <div className={styles.headerLinkIcon}>
                 {leftIcon}
             </div>}
@@ -24,6 +40,7 @@ export function HeaderLink({ path, name, leftIcon, rightIcon }: {
             {rightIcon && <div className={styles.headerLinkIcon}>
                 {rightIcon}
             </div>}
-        </div>
+        </a>
     );
 }
+

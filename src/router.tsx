@@ -1,7 +1,6 @@
 import App from './pages/App';
 import { createBrowserRouter } from "react-router-dom";
-import Devices from './pages/Devices';
-import Cart from './pages/Cart';
+import Workspace from './pages/Workspace';
 
 export const router = createBrowserRouter([
   {
@@ -9,11 +8,7 @@ export const router = createBrowserRouter([
     element: <App />,
   },
   {
-    path: "/devices",
-    element: <Devices />
-  },
-  {
-    path: "/cart",
-    element: <Cart />
+    path: "/workspace",
+    element: <Workspace />,
   }
 ]);
