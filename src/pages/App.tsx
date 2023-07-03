@@ -1,15 +1,9 @@
-import Header from '../components/Header';
+import MainLayout from '../layouts/Main';
 
 export default function App() {
   return (
-    <>
-      <Header/>
-      <main>
-        Hello
-      </main>
-      <footer>
+    <MainLayout title="Landing Page">
 
-      </footer>
-    </>
+    </MainLayout>
   )
 }

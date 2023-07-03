@@ -1,24 +1,14 @@
 import { FC, createContext, useState } from "react";
 import { useID } from "../hooks/useID";
-
-interface CartObjectInterface {
-  id?: number;
-  objectId: string;
-  name: string;
-}
-
-interface CartContextInterface {
-  cart: CartObjectInterface[];
-  getFromCart: (id: number) => CartObjectInterface | undefined;
-  removeFromCart: (id: number) => void;
-  addToCart: (cartObject: CartObjectInterface) => void;
-}
+import { CartContextInterface } from "../interfaces/CartContextInterface";
+import { CartObjectInterface } from "../interfaces/CartObjectInterface";
 
 export const CartContext = createContext<CartContextInterface| null>(null);
 
 const CartProvider: FC<{children: React.ReactNode}> = ({children}) => {
   const [cart, setCart] = useState<CartObjectInterface[]>([]);
   const [id, increaseID] = useID();
+  const [cartOpen, setCartOpen] = useState<boolean>(false)
 
   const getFromCart = (id: number) => {
     return cart.find(cartObject => {
@@ -42,9 +32,20 @@ const CartProvider: FC<{children: React.ReactNode}> = ({children}) => {
     increaseID();
   }
 
+  const toggleCart = () => {
+    setCartOpen(!cartOpen);
+  }
+
   return (
     <CartContext.Provider
-      value={{cart, addToCart, getFromCart, removeFromCart}}>
+      value={{
+        cart,
+        cartOpen, 
+        toggleCart, 
+        addToCart, 
+        getFromCart, 
+        removeFromCart
+      }}>
       {children}
     </CartContext.Provider>
   );
