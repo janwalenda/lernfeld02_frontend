@@ -7,16 +7,13 @@ import { CartContextInterface } from "../interfaces/CartContextInterface";
 import styles from "../styles/ProductCard.module.scss";
 import classNames from 'classnames';
 import shadow from '../styles/Shadow.module.scss';
+import { Product } from "./Product";
 
 export default function PoductCard({ 
     productName, 
     price, 
     productId 
-}: {
-    productName: string;
-    productId: string;
-    price: number;
-}) {
+}: Product) {
     const cart = useContext(CartContext) as CartContextInterface;
     const boxStyle = classNames(
         styles.productCardBox,

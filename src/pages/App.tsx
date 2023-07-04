@@ -1,46 +1,24 @@
+/* eslint-disable @typescript-eslint/no-inferrable-types */
 import MainLayout from '../layouts/Main';
 import PoductCard from '../components/ProductCard';
-import { CardGroup } from '../components/CardGroup';
+import { generateRandomProducts } from '../helpers/generateRandomProducts';
 
 export default function App() {
+  const products = generateRandomProducts(5);
+
+
   return (
     <MainLayout>
-      <CardGroup>
-        <PoductCard 
-          productName="Laptop 1" 
-          price={10000} 
-          productId="sdgee" 
-        />
-        <PoductCard 
-          productName="Laptop 2" 
-          price={20} 
-          productId="sgeioe" 
-        />
-        <PoductCard 
-          productName="Laptop 3" 
-          price={5422} 
-          productId="nftht" 
-        />
-      </CardGroup>
-      <CardGroup>
-        <PoductCard 
-          productName="Laptop 4" 
-          price={100} 
-          productId="sdgee" 
-        />
-        <PoductCard 
-          productName="Laptop 5" 
-          price={.65} 
-          productId="sgeioe" 
-        />
-        <PoductCard 
-          productName="Laptop 6" 
-          price={2343} 
-          productId="nftht" 
-        />
-        </CardGroup>
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(3, calc(100% /3))',
+        height: '100%',
+        overflowY: 'scroll',
+      }}>
+        {products.map(product => {
+          return <PoductCard {...product} key={product.productId} />
+        })}
+      </div>
     </MainLayout>
   )
 }
-
-

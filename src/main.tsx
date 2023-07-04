@@ -5,7 +5,9 @@ import {router} from './router.js';
 import './styles/index.scss';
 import CartProvider from './contexts/CartContext.js';
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+const root = document.getElementById('root') as HTMLElement;
+
+ReactDOM.createRoot(root).render(
   <React.StrictMode>
     <CartProvider>
       <RouterProvider router={router} />

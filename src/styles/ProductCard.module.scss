@@ -1,7 +1,7 @@
 @import './theme.scss';
 
 .productCardBox{
-    width: calc(90% / 3);
+    margin: 1rem;
     border-radius: 1rem;
     background-color: Theme('slate', 50);
     padding: 10px;
