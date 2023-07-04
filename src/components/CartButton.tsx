@@ -2,8 +2,8 @@ import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../contexts/CartContext";
 import Button from "./Button";
 import { ButtonType } from "../types/ButtonType";
-import { HiShoppingCart } from "react-icons/hi";
 import { CartContextInterface } from "../interfaces/CartContextInterface";
+import { IoCart } from "react-icons/io5";
 
 export default function CartButton() {
     const cart = useContext(CartContext) as CartContextInterface;
@@ -14,15 +14,17 @@ export default function CartButton() {
         setLength(cartArr.length);
     }, [cart]);
 
+    const buttonProps = {
+        onClick: () => {
+            cart.toggleCart();
+        }
+    };
+
     return (
         <Button 
             type={ButtonType.PRIMARY} 
-            leftIcon={<HiShoppingCart/>}
-            button={{
-                onClick: () => {
-                    cart.toggleCart();
-                }
-            }}
+            leftIcon={<IoCart/>}
+            buttonProps={buttonProps}
             badge={cartLength}
         />
     )

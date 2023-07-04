@@ -1,0 +1,16 @@
+@import './theme.scss';
+
+$shadowValue: 5px 5px 10px Theme('slate', 300);
+
+.box {
+    box-shadow: $shadowValue
+}
+
+.boxTransitionOnHover {
+    transition: box-shadow 250ms;
+    &:hover,
+    &:focus,
+    &:active {
+        box-shadow: $shadowValue
+    }
+}

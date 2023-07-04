@@ -8,7 +8,7 @@ interface ButtonProps {
   text?: string;
   rightIcon?: React.ReactNode;
   type: ButtonType
-  button?: React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
+  buttonProps?: React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
   badge?: string | number;
 }
 
@@ -17,15 +17,16 @@ export default function Button({
   text,
   rightIcon,
   type,
-  button,
+  buttonProps,
   badge,
 }: ButtonProps) {
   const buttonClass = classNames({
     [styles.primaryButton]: type === ButtonType.PRIMARY,
+    [styles.secondaryButton]: type === ButtonType.SECONDARY
   });
 
   return (
-      <button {...button} className={buttonClass}>
+      <button {...buttonProps} className={buttonClass}>
         {leftIcon && (<div>
           {leftIcon}
         </div>)}

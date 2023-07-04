@@ -40,7 +40,10 @@ body{
     background-color: Theme("slate", 200);
     height: 100vh;
     #root {
-
+        display:flex;
+        width: 100vw;
+        height: 100vh;
+        flex-direction: column;
     }
 }
 

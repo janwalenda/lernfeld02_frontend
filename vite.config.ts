@@ -6,8 +6,8 @@ export default defineConfig({
   plugins: [react()],
   css: {
     modules: {
-      hashPrefix: '[hash:32]',
-      generateScopedName: '[hash:32]'
+      hashPrefix: '[hash:8]',
+      generateScopedName: '[hash:8]'
     }  
   }
 })

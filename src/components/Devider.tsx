@@ -10,5 +10,5 @@ export default function Devider({ direction, style }: { direction: DeviderDirect
 
     return (
         <span className={deviderStyle} style={style}/>
-    )
+    );
 }

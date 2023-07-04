@@ -17,9 +17,11 @@ const CartProvider: FC<{children: React.ReactNode}> = ({children}) => {
   };
 
   const removeFromCart = (id: number) => {
-    return cart.filter(cartObject => {
+    const filter = cart.filter(cartObject => {
       return cartObject.id !== id;
     });
+
+    setCart(filter);
   };
 
   const addToCart = (cartObject: CartObjectInterface) => {
@@ -40,6 +42,13 @@ const CartProvider: FC<{children: React.ReactNode}> = ({children}) => {
     setCartOpen(!cartOpen);
   }
 
+  const getTotalPrice = () => {
+    const prices = cart.map(item => item.price);
+    if(prices.length > 0) {
+      return prices.reduce((a, b) => a + b);
+    }
+  }
+
   return (
     <CartContext.Provider
       value={{
@@ -49,7 +58,8 @@ const CartProvider: FC<{children: React.ReactNode}> = ({children}) => {
         addToCart, 
         getFromCart, 
         removeFromCart,
-        checkoutCart
+        checkoutCart,
+        getTotalPrice,
       }}>
       {children}
     </CartContext.Provider>

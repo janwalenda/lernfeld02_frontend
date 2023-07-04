@@ -6,9 +6,6 @@ $rounded-full: 99999px;
     .headerLinkIcon {
         display: flex;
         padding:2px;
-        border-style: solid;
-        border-width: 2px;
-        border-radius: $rounded-full;
         position: relative;
     }
     .headerLinkText {
@@ -19,7 +16,7 @@ $rounded-full: 99999px;
 
 @mixin headerLinkkDefaults(){
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     flex-direction: row;
     padding: 5px;
