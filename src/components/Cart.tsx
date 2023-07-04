@@ -2,10 +2,12 @@ import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../contexts/CartContext";
 import { CartContextInterface } from "../interfaces/CartContextInterface";
 import styles from "../styles/Cart.module.scss";
+import shadow from '../styles/Shadow.module.scss';
 import { ButtonType } from "../types/ButtonType";
 import Button from "./Button";
 import { IoBag, IoClose } from "react-icons/io5";
 import { CartElement } from "./CartElement";
+import classNames from 'classnames';
 
 
 export default function Cart() {
@@ -15,11 +17,18 @@ export default function Cart() {
   const [cartStyle, setCartStyle] = useState<string>();
 
   useEffect(() => {
+
     if (cart.cartOpen) {
-      setCartStyle(styles.cartOpen);
+      const claseName = classNames(
+        styles.cartOpen,
+        shadow.box,
+      );
+
+      setCartStyle(claseName);
     } else {
       setCartStyle(styles.cartClosed);
     }
+  
   }, [cart.cartOpen])
 
   useEffect(() => {

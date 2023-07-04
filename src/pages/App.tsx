@@ -1,15 +1,11 @@
 import MainLayout from '../layouts/Main';
 import PoductCard from '../components/ProductCard';
+import { CardGroup } from './CardGroup';
 
 export default function App() {
   return (
     <MainLayout>
-      <div style={{
-        width: '100%',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-around'
-      }}>
+      <CardGroup>
         <PoductCard 
           productName="Computer 1" 
           price={10000} 
@@ -25,7 +21,26 @@ export default function App() {
           price={5422} 
           productId="nftht" 
         />
-      </div>
+      </CardGroup>
+      <CardGroup>
+        <PoductCard 
+          productName="Computer 4" 
+          price={100} 
+          productId="sdgee" 
+        />
+        <PoductCard 
+          productName="Computer 5" 
+          price={.65} 
+          productId="sgeioe" 
+        />
+        <PoductCard 
+          productName="Computer 6" 
+          price={2343} 
+          productId="nftht" 
+        />
+        </CardGroup>
     </MainLayout>
   )
 }
+
+
