@@ -6,7 +6,7 @@ export function generateRandomProducts(length: number): Product[] {
         
         const randomPrice = (Math.random() * 10000);
         const product: Product = {
-            price: randomPrice,
+            price: Math.round(randomPrice) + .99,
             productId: generateRandomProductID(),
             productName: `Computer ${i}`
         };

@@ -7,7 +7,7 @@ import { CartContextInterface } from "../interfaces/CartContextInterface";
 import styles from "../styles/ProductCard.module.scss";
 import classNames from 'classnames';
 import shadow from '../styles/Shadow.module.scss';
-import { Product } from "./Product";
+import { Product } from "../interfaces/Product";
 
 export default function PoductCard({ 
     productName, 

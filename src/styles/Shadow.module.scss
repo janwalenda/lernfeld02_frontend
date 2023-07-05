@@ -1,6 +1,6 @@
 @import './theme.scss';
 
-$shadowValue: 5px 5px 10px Theme('slate', 300);
+$shadowValue: 5px 5px 10px color('slate', 300);
 
 .box {
     box-shadow: $shadowValue

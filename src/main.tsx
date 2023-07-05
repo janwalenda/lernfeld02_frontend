@@ -12,5 +12,5 @@ ReactDOM.createRoot(root).render(
     <CartProvider>
       <RouterProvider router={router} />
     </CartProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
 )

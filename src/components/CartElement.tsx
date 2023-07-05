@@ -15,7 +15,10 @@ export function CartElement({ element }: { element: CartObjectInterface; }) {
   return (
     <div className={styles.cartElementWrapper}>
       <div>
-        <h5>{element.name} - {element.price}€</h5>
+        <div>
+          <h5>{element.name}</h5>
+          <small>{element.price}€</small>
+        </div>
         <Button
           type={ButtonType.SECONDARY}
           leftIcon={<IoTrashBinOutline />}

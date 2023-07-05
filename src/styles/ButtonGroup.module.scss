@@ -1,13 +1,19 @@
 @import './theme.scss';
+@import './rounded.scss';
 
 .buttonGroup {
+    @include rounded(xl);
+    @include light(){
+        background-color: color('slate', 200);
+    }
+    @include dark(){
+        background-color: color(zink, 600);
+    }
     margin: .5rem;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    background-color: Theme('slate', 200);
-    border-radius: .5rem;
     padding: .3rem;
     button {
         margin: .3rem;

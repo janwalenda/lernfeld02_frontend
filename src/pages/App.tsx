@@ -2,19 +2,15 @@
 import MainLayout from '../layouts/Main';
 import PoductCard from '../components/ProductCard';
 import { generateRandomProducts } from '../helpers/generateRandomProducts';
+import styles from '../styles/App.module.scss';
 
 export default function App() {
-  const products = generateRandomProducts(5);
+  const products = generateRandomProducts(100);
 
 
   return (
     <MainLayout>
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(3, calc(100% /3))',
-        height: '100%',
-        overflowY: 'scroll',
-      }}>
+      <div className={styles.appPageProductList}>
         {products.map(product => {
           return <PoductCard {...product} key={product.productId} />
         })}

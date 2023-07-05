@@ -1,4 +1,4 @@
-@function Theme($color,$tone){
+@function color($color,$tone){
     $palettes: (
         purple: (
             50: #faf5ff,
@@ -25,7 +25,7 @@
             900:#0f172a,
             950:#020617
         ),
-        "red": (
+        'red': (
             50:#fef2f2,
             100:#fee2e2,
             200:#fecaca,
@@ -37,6 +37,19 @@
             800:#991b1b,
             900:#7f1d1d,
             950:#450a0a
+        ),
+        zink: (
+            50: #fafafa,
+            100: #f4f4f5,
+            200: #e4e4e7,
+            300: #d4d4d8,
+            400: #a1a1aa,
+            500: #71717a,
+            600: #52525b,
+            700: #3f3f46,
+            800: #27272a,
+            900: #18181b,
+            950: #09090b
         )
     );
 
@@ -57,4 +70,14 @@
    
 }
 
-$rounded-full: 9999px;
+@mixin light {
+    @media (prefers-color-scheme: light) {
+        @content;
+    }
+}
+
+@mixin dark {
+    @media (prefers-color-scheme: dark) {
+        @content;
+    }
+}

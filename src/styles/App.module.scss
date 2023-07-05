@@ -1,0 +1,18 @@
+@import './media.scss';
+
+.appPageProductList{
+    display: grid;
+    grid-template-columns: repeat(3, calc(100% /3));
+    height: 100%;
+    overflow-y: scroll;
+    align-items: start;
+    justify-items: stretch;
+
+    @include xs() {
+        grid-template-columns: repeat(1, 100%);
+    }
+
+    @include sm() {
+        grid-template-columns: repeat(2, 50%);
+    }
+}

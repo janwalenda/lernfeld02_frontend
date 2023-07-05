@@ -1,12 +1,13 @@
 @import './theme.scss';
+@import './rounded.scss';
 
 @mixin buttonBaseStyle(){
+    @include rounded(lg);
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: row;
     padding: .5rem;
-    border-radius: .5rem;
     position: relative;
     & * {
         display: flex;
@@ -15,13 +16,23 @@
 
 .primaryButton{
     @include buttonBaseStyle();
+    @include light(){
+        background-color: color(slate, 500);
+    }
+    @include dark(){
+        background-color: color(zink, 500);
+    }
     border-style: none;
-    background-color: Theme('slate', 500);
     transition: background-color 250ms;
     &:hover,
     &:focus,
     &:active {
-        background-color: Theme('slate', 400);
+        @include light(){
+            background-color: color(slate, 400);
+        }
+        @include dark(){
+            background-color: color(zink, 400);
+        }
     }
     
 }
@@ -29,13 +40,13 @@
 .secondaryButton{
     @include buttonBaseStyle();
     border-style: solid;
-    border-color: Theme('slate', 500);
-    color: Theme('slate', 500);
-    background-color: Theme('slate', 50);
+    border-color: color('slate', 500);
+    color: color('slate', 500);
+    background-color: color('slate', 50);
     transition: background-color 250ms;
     &:hover,
     &:focus,
     &:active {
-        background-color: Theme('slate', 300);
+        background-color: color('slate', 300);
     }
 }
