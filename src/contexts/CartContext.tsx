@@ -47,6 +47,7 @@ const CartProvider: FC<{children: React.ReactNode}> = ({children}) => {
     if(prices.length > 0) {
       return prices.reduce((a, b) => a + b);
     }
+    return 0;
   }
 
   return (

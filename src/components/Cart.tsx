@@ -15,6 +15,7 @@ export default function Cart() {
   const [isEmpty, setIsEmpty] = useState<boolean>(true);
   const [cartElements, setCardElements] = useState<React.ReactNode[]>([]);
   const [cartStyle, setCartStyle] = useState<string>();
+  const [totalPrice, setTotalPrice] = useState<string>('');
 
   useEffect(() => {
 
@@ -34,11 +35,19 @@ export default function Cart() {
   useEffect(() => {
     setIsEmpty(cart.cart.length === 0);
 
-    const cartMap = cart.cart.map((element, index) => (
-      <CartElement element={element} key={index} />
+    const cartMap = cart.cart.map((element) => (
+      <CartElement 
+        element={element} 
+        key={element.id} 
+      />
     ));
 
     setCardElements(cartMap);
+    const price = cart.getTotalPrice();
+    if(typeof price === 'number'){
+      const priceString = price.toLocaleString('de');
+      setTotalPrice(priceString);
+    }
   }, [cart, cart.removeFromCart]);
 
   return (
@@ -55,8 +64,10 @@ export default function Cart() {
           }}
         />
       </div>
-      {!isEmpty && cartElements}
-      {!isEmpty && <small>Total: {cart.getTotalPrice()}€</small>}
+      <div className={styles.cartList}>
+        {!isEmpty && cartElements}
+      </div>
+      {!isEmpty && <small>Total: {totalPrice}€</small>}
       {!isEmpty && <Button 
         type={ButtonType.PRIMARY} 
         text="Checkout" 

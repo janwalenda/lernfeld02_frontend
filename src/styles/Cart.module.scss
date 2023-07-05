@@ -1,15 +1,18 @@
 @import './theme.scss';
+@import './media.scss';
+@import './rounded.scss';
 
 .cartOpen {
+    @include rounded('xl');
     display: flex;
     flex-direction: column;
     position: absolute;
-    right: 3rem;
-    top: 6rem;
+    right: 1rem;
+    top: 5rem;
     width: 30%;
-    background-color: Theme('slate', 50);
-    border-radius: 1rem;
+    background-color: color('slate', 50);
     padding: 20px;
+    max-height: 70%;
     .cartTitle{
         display: flex;
         flex-direction: row;
@@ -21,7 +24,21 @@
             flex-grow: 1;
         }
     }
+    .cartList{
+        height: 100%;
+        overflow-y: scroll;
+    }
+
+    @include xs() {
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+        width: 100vw;
+        right: 0px;
+        top:0px;
+        height: 100vh;
+    }
 }
+
 
 .cartClosed {
     display: none;

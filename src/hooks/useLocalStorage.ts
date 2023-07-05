@@ -17,5 +17,10 @@ export function useLocalStorage(){
         localStorage.clear();
     };
 
-    return { setItem, getItem, removeItem, clear };
+    return { 
+        setItem, 
+        getItem, 
+        removeItem, 
+        clear 
+    };
 }

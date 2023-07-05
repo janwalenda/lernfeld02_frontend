@@ -1,11 +1,13 @@
 @import './theme.scss';
+@import './rounded.scss';
+
 .badge {
+    @include rounded(full);
+    background-color: color('red', 300);
     position:absolute;
-    border-radius: 99999px;
     padding-left: 10px;
     padding-right: 10px;
     font-size: .8rem;
-    background-color: Theme('red', 300);
     right: -.5rem;
     top: -.3rem;
 }

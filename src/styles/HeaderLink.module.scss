@@ -1,6 +1,5 @@
 @import './theme.scss';
-$rounded-full: 99999px;
-
+@import './rounded.scss';
 
 @mixin children(){
     .headerLinkIcon {
@@ -14,14 +13,14 @@ $rounded-full: 99999px;
     }
 }
 
-@mixin headerLinkkDefaults(){
+@mixin headerLinkDefaults(){
+    @include rounded(lg);
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: row;
     padding: 5px;
     margin: 5px;
-    border-radius: 10px;
     transition: background-color 250ms;
     width: 100%;
     height: 100%;
@@ -30,21 +29,21 @@ $rounded-full: 99999px;
 }
 
 .headerLinkWrapper{
-    @include headerLinkkDefaults();
-    color: Theme('slate', 600);
+    @include headerLinkDefaults();
+    color: color('slate', 600);
     cursor: pointer;
     &:hover,
     &:focus,
     &:active {
-        background-color: Theme('slate', 300);
+        background-color: color('slate', 300);
     }
     @include children();
 }
 
 .selectedLinkWrapper{
-    background-color: Theme('slate', 600);
-    color: Theme('slate', 200);
+    background-color: color('slate', 600);
+    color: color('slate', 200);
     cursor: pointer;
     @include children();
-    @include headerLinkkDefaults();
+    @include headerLinkDefaults();
 }

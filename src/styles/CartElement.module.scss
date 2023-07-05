@@ -1,8 +1,11 @@
+@import './theme.scss';
+
 .cartElementWrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: start;
+  background-color: color('slate', 100);
   &>div {
     margin-bottom: .5rem;
     margin-top: .5rem;
@@ -11,8 +14,9 @@
     justify-content: left;
     align-items: center;
     width: 100%;
-    h5{
+    &>div{
       display: flex;
+      flex-direction: column;
       flex-grow: 1;
     }
   }
