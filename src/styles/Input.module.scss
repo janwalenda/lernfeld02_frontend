@@ -1,0 +1,33 @@
+@import './theme.scss';
+@import './rounded.scss';
+
+.inputWrapper {
+    @include rounded('2xl');
+    width: 100%;
+    justify-content: start;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    padding: .8rem;
+    background-color: color(slate, 300);
+    span {
+        color: color(slate, 500);
+        display: flex;
+        margin-right: .3rem;
+        font-weight: 300;
+        &::after{
+            content: ':';
+        }
+    }
+    input {
+        display: flex;
+        flex-grow: 1;
+        appearance: none;
+        border: none;
+        background: transparent;
+        outline: none;
+        caret-color: color(slate, 700);
+        color: color(slate, 700);
+        font-size: 1rem;
+    }
+}

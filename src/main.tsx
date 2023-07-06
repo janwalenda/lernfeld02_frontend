@@ -3,14 +3,20 @@ import ReactDOM from 'react-dom/client';
 import {RouterProvider} from "react-router-dom";
 import {router} from './router.js';
 import './styles/index.scss';
-import CartProvider from './contexts/CartContext.js';
+import CartProvider from './contexts/CartContext';
+import AuthProvider from './contexts/AuthContext';
+import ToastProvider from './contexts/ToastContext.js';
 
 const root = document.getElementById('root') as HTMLElement;
 
 ReactDOM.createRoot(root).render(
   <React.StrictMode>
-    <CartProvider>
-      <RouterProvider router={router} />
-    </CartProvider>
+    <ToastProvider>
+      <AuthProvider>
+        <CartProvider>
+          <RouterProvider router={router} />
+        </CartProvider>
+      </AuthProvider>
+    </ToastProvider>
   </React.StrictMode>
 )
