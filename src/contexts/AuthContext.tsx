@@ -84,7 +84,18 @@ const AuthProvider: FC<{children: React.ReactNode}> = ({children}) => {
 
   return (
     <AuthContext.Provider
-      value={{user: userData, loggedIn: loggedIn, login, logout, getToken, loginMode, toggleLoginMode, getAuthPath, register}}>
+      value={{
+        user: userData, 
+        loggedIn: loggedIn, 
+        login, 
+        logout, 
+        getToken, 
+        loginMode, 
+        toggleLoginMode, 
+        getAuthPath, 
+        register,
+        getUserData
+    }}>
       {children}
     </AuthContext.Provider>
   );
