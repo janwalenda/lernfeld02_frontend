@@ -17,8 +17,12 @@ export default function Auth({
     const nav = useNavigate();
 
     useEffect(()=>{
-        const path = auth.getAuthPath();
-        nav(path);
+        if(auth.loggedIn){
+            nav('/');
+        } else {
+            const path = auth.getAuthPath();
+            nav(path);
+        }
     }, [auth, nav]);
     
     return (

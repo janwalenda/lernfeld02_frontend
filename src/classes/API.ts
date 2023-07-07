@@ -24,19 +24,24 @@ export class API{
     async login(formData: FormData): Promise<LoginResponse> {
         const url = this._generateURL(['login']);
 
+        
+        
         if(!formData.has('email')) {
             throw new Error('No email address');
         } else if(!formData.has('password')) {
             throw new Error('No password');
         }
-
+        
+        const json = API.generateJSONfromFormData(formData);
         const headers = new Headers({
-            'Content-Type': 'application/x-www-form-urlencoded',
+            'Content-Type': 'application/json',
+            'Content-Length': json.length.toString(),
         });
-
+        
         const request = await fetch(url, {
+            method: 'POST',
             headers,
-            body: formData,
+            body: json,
         });
 
         if(request.status !== 200) {
@@ -51,7 +56,7 @@ export class API{
 
     async register(formData: FormData) {
         const url = this._generateURL(['register']);
-
+        
         if(!formData.has('email')) {
             throw new Error('No email address');
         } else if(!formData.has('password')) {
@@ -59,14 +64,12 @@ export class API{
         } else if(!formData.has('username')) {
             throw new Error('No username');
         }
-
+        
         const json = API.generateJSONfromFormData(formData);
-        console.log(json);
         const headers = new Headers({
             'Content-Type': 'application/json',
-            'Content-Length': json.length.toString()
+            'Content-Length': json.length.toString(),
         });
-
 
         const request = await fetch(url, {
             method: 'POST',
@@ -84,6 +87,23 @@ export class API{
         return response;
     }
 
+    public async getLaptops() {
+        const url = this._generateURL(['laptop']);
+
+        const token = API.getToken();
+        const headers = new Headers({
+            'Authorization': `JWT ${token}`,
+        });
+        const request = await fetch(url,{
+            method: 'GET',
+            redirect: 'follow',
+            headers
+        });
+          
+        const response = await request.json();
+        return JSON.parse(response);
+    }
+
     public static getToken(): string | null {
         const ls = window.localStorage;
         const user = ls.getItem('user');
@@ -96,9 +116,15 @@ export class API{
     }
 
     private static generateJSONfromFormData(formData: FormData): string {
-        const object = {};
+        type ObjectType = {
+            [key: string]: string;
+        };
+
+        const object: ObjectType = {};
         formData.forEach((value, key) => {
-            Object.defineProperty(object, key, value);
+            Object.assign(object, {
+                [key]: value,
+            })
         });
         const json = JSON.stringify(object);
         return json;

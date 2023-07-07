@@ -16,7 +16,6 @@ export default function Login(){
 
     const handleSubmit: SubmitHandler = (event) => {
         event.preventDefault();
-        console.log('Okay')
         const form = event.currentTarget;
         const formData = new FormData(form);
         auth.login(formData);

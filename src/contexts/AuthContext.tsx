@@ -20,31 +20,32 @@ const AuthProvider: FC<{children: React.ReactNode}> = ({children}) => {
 
   const api = new API();
 
-  async function login(params: FormData) {
-    try {
-      const userInfo = await api.login(params);
-      await setItem('user', JSON.stringify(userInfo));
-
-    } catch (err: any) {
+  function login(params: FormData) {
+    api.login(params).then(userInfo => {
+      setItem('user', JSON.stringify(userInfo));
+      setLoggedIn(true);
+    }).catch((err: Error) => {
       toast.saveToast({
         title: 'ERROR',
         description: err.message,
         type: ToastType.ERROR
       });
-    }
+    });
   }
 
-  async function register(params: FormData) {
-    try {
-      await api.register(params);
-      toggleLoginMode();
-    } catch (err: any) {
+  function register(params: FormData) {
+    api.register(params)
+    .catch((err: Error) => {
       toast.saveToast({
         title: 'ERROR',
         description: err.message,
         type: ToastType.ERROR
-      })
-    }
+      });
+      console.log(err);
+    }) 
+    .finally(() => {
+      toggleLoginMode();
+    })
   }
 
   function logout() {
