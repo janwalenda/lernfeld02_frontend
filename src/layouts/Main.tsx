@@ -1,10 +1,11 @@
 import { useContext, useEffect } from "react"
-import Cart from "../components/Cart"
+import CartModal from "../components/CartModal"
 import Header from "../components/Header"
 import styles from "../styles/MainLayout.module.scss"
 import { AuthContext } from "../contexts/AuthContext"
 import { AuthContextInterface } from '../interfaces/AuthContextInterface'
 import { useNavigate } from 'react-router-dom';
+import ProfileModal from "../components/ProfileModal"
 
 interface LayoutOptions {
   title?: string
@@ -20,7 +21,7 @@ export default function Main({ title, children }: LayoutOptions) {
       const path = auth.getAuthPath();
       nav(path);
     }
-  }, [auth]);
+  }, [auth, nav]);
 
   return (
     <>
@@ -33,11 +34,9 @@ export default function Main({ title, children }: LayoutOptions) {
           {!!title && <h1>{title}</h1>}
           {children}
         </div>
-        <Cart/>
+        <CartModal/>
+        <ProfileModal />
       </main>
-      <footer>
-
-      </footer>
     </>
   )
 }

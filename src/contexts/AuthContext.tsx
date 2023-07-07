@@ -94,7 +94,7 @@ const AuthProvider: FC<{children: React.ReactNode}> = ({children}) => {
         toggleLoginMode, 
         getAuthPath, 
         register,
-        getUserData
+        getUserData,
     }}>
       {children}
     </AuthContext.Provider>

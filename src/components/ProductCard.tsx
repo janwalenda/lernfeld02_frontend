@@ -20,15 +20,18 @@ export default function PoductCard({
         shadow.boxTransitionOnHover
     )
 
+    function convertPriceToNumber(price: string): number{
+        const replaced = price.replace(',', '.')
+        return parseFloat(replaced);
+    }
+
     const handleButtonClick = () => {
         cart.addToCart({
           name: name,
           objectId: id.toString(),
-          price: price,
+          price: convertPriceToNumber(price),
         });
     };
-
-    const localPrice = price.toLocaleString('de');
 
     return (
         <div className={boxStyle}>
@@ -36,7 +39,7 @@ export default function PoductCard({
                 <h3 className={styles.productCardTitle}>
                     {name}
                 </h3>
-                <small className={styles.productCardPrice}>{localPrice}€</small>
+                <small className={styles.productCardPrice}>{price}€</small>
             </div>
             <Button
               type={ButtonType.PRIMARY}
