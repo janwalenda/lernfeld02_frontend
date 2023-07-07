@@ -1,14 +1,13 @@
 /* eslint-disable @typescript-eslint/no-inferrable-types */
 import MainLayout from '../layouts/Main';
 import PoductCard from '../components/ProductCard';
-import { generateRandomProducts } from '../helpers/generateRandomProducts';
 import styles from '../styles/App.module.scss';
 import { API } from '../classes/API';
 import { useEffect, useState } from 'react';
+import { Product } from '../interfaces/Product';
 
 export default function App() {
-  const products = generateRandomProducts(100);
-  const [laptops, setLaptops] = useState<any[]>([]);
+  const [laptops, setLaptops] = useState<Product[]>([]);
   
   useEffect(() => {
     const api = new API();
@@ -22,7 +21,7 @@ export default function App() {
     <MainLayout>
       <div className={styles.appPageProductList}>
         {laptops.map(product => {
-          return <PoductCard {...product} key={product.productId} />
+          return <PoductCard {...product} key={product.id} />
         })}
       </div>
     </MainLayout>

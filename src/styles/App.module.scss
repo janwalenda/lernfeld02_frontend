@@ -3,10 +3,12 @@
 .appPageProductList{
     display: grid;
     grid-template-columns: repeat(3, calc(100% /3));
-    height: 100%;
     overflow-y: scroll;
     align-items: start;
     justify-items: stretch;
+    align-content: center;
+    justify-content: start;
+    transition: grid-template-columns 250ms;
 
     @include xs() {
         grid-template-columns: repeat(1, 100%);
