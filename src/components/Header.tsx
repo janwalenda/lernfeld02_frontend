@@ -21,7 +21,7 @@ export default function Header() {
                 <HeaderLink path='/' name='Home' rightIcon={<IoHome/>}/>
                 <HeaderLink path='/workspace' name="Workspace" rightIcon={<IoDesktop/>}/>
             </div>
-            <Devider direction={DeviderDirection.VERTICAL} />
+            <Devider direction={DeviderDirection.VERTICAL} size='half' />
             <ButtonGroup>
                 <CartButton/>
                 <ProfileButton/>

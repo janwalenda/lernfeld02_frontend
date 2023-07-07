@@ -34,6 +34,7 @@ export function CartElement({ element }: { element: CartObjectInterface; }) {
       </div>
       <Devider 
         direction={DeviderDirection.HORIZONTAL}
+        size="2xl"
       />
     </div>
   );

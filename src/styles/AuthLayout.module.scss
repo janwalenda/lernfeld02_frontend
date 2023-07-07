@@ -1,0 +1,27 @@
+@import './theme.scss';
+@import './rounded.scss';
+@import './media.scss';
+
+.screen {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: color(slate, 50);
+    user-select: none;
+    .formCard{
+        @include rounded(xl);
+        @include xs(){
+            width: 100%;
+        };
+        background-color: color(slate, 200);
+        width: 50%;
+        display: flex;
+        align-items: stretch;
+        justify-content: center;
+        flex-direction: column;
+        padding: 2rem;
+        color: color(slate, 500);
+    }
+}

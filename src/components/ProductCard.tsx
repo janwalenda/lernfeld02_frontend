@@ -10,9 +10,9 @@ import shadow from '../styles/Shadow.module.scss';
 import { Product } from "../interfaces/Product";
 
 export default function PoductCard({ 
-    productName, 
+    name, 
     price, 
-    productId 
+    id 
 }: Product) {
     const cart = useContext(CartContext) as CartContextInterface;
     const boxStyle = classNames(
@@ -22,8 +22,8 @@ export default function PoductCard({
 
     const handleButtonClick = () => {
         cart.addToCart({
-          name: productName,
-          objectId: productId,
+          name: name,
+          objectId: id.toString(),
           price: price,
         });
     };
@@ -34,7 +34,7 @@ export default function PoductCard({
         <div className={boxStyle}>
             <div className={styles.productCardWrapper}>
                 <h3 className={styles.productCardTitle}>
-                    {productName}
+                    {name}
                 </h3>
                 <small className={styles.productCardPrice}>{localPrice}€</small>
             </div>

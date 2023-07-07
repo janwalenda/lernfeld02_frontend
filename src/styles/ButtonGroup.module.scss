@@ -3,12 +3,7 @@
 
 .buttonGroup {
     @include rounded(xl);
-    @include light(){
-        background-color: color('slate', 200);
-    }
-    @include dark(){
-        background-color: color(zink, 600);
-    }
+    background-color: color('slate', 200);
     margin: .5rem;
     display: flex;
     flex-direction: row;

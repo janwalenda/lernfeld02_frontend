@@ -16,23 +16,13 @@
 
 .primaryButton{
     @include buttonBaseStyle();
-    @include light(){
-        background-color: color(slate, 500);
-    }
-    @include dark(){
-        background-color: color(zink, 500);
-    }
+    background-color: color(slate, 500);
     border-style: none;
     transition: background-color 250ms;
     &:hover,
     &:focus,
     &:active {
-        @include light(){
-            background-color: color(slate, 400);
-        }
-        @include dark(){
-            background-color: color(zink, 400);
-        }
+        background-color: color(slate, 400);
     }
     
 }
@@ -47,6 +37,6 @@
     &:hover,
     &:focus,
     &:active {
-        background-color: color('slate', 300);
+        background-color: color(slate, 300);
     }
 }
