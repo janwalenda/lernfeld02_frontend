@@ -10,4 +10,5 @@ export interface AuthContextInterface {
   toggleLoginMode: () => void;
   getAuthPath: () => string;
   getToken: () => string | null;
+  getUserData: () => LoginResponse | undefined;
 }

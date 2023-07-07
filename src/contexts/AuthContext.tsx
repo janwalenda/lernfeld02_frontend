@@ -13,7 +13,7 @@ export const AuthContext = createContext<AuthContextInterface | null>(null);
 const AuthProvider: FC<{children: React.ReactNode}> = ({children}) => {
   const token = API.getToken();
   const [userData, setUserData] = useState<LoginResponse | null>(null);
-  const {setItem, removeItem} = useLocalStorage();
+  const {setItem, removeItem, getItem} = useLocalStorage();
   const [loggedIn, setLoggedIn] = useState(!!token);
   const [loginMode, setLoginMode] = useState<boolean>(true);
   const toast = useContext(ToastContext) as ToastContextType;
@@ -62,6 +62,16 @@ const AuthProvider: FC<{children: React.ReactNode}> = ({children}) => {
 
   function toggleLoginMode() {
     setLoginMode(!loginMode);
+  }
+
+  function getUserData(){
+    const user = getItem('user');
+    if(typeof user === 'string') {
+      const parsed = JSON.parse(user) as LoginResponse;
+      return parsed;
+    } else {
+      logout();
+    }
   }
 
   function getAuthPath() {
