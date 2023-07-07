@@ -1,13 +1,11 @@
 /* eslint-disable @typescript-eslint/no-inferrable-types */
 import MainLayout from '../layouts/Main';
 import PoductCard from '../components/ProductCard';
-import { generateRandomProducts } from '../helpers/generateRandomProducts';
 import styles from '../styles/App.module.scss';
 import { API } from '../classes/API';
 import { useEffect, useState } from 'react';
 
 export default function App() {
-  const products = generateRandomProducts(100);
   const [laptops, setLaptops] = useState<any[]>([]);
   
   useEffect(() => {
