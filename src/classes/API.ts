@@ -1,4 +1,5 @@
 import { LoginResponse } from "../interfaces/LoginResponse";
+import { Product } from "../interfaces/Product";
 import { RegisterResponse } from "../interfaces/RegisterResponse";
 
 export class API{
@@ -101,7 +102,7 @@ export class API{
         });
           
         const response = await request.json();
-        return JSON.parse(response);
+        return JSON.parse(response) as Product[];
     }
 
     public static getToken(): string | null {

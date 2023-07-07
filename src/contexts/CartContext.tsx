@@ -6,7 +6,7 @@ import { CartObjectInterface } from "../interfaces/CartObjectInterface";
 export const CartContext = createContext<CartContextInterface| null>(null);
 
 const CartProvider: FC<{children: React.ReactNode}> = ({children}) => {
-  const [cart, setCart] = useState<CartObjectInterface[]>([]);
+  const [cart, setCart] = useState<CartObjectInterface[]>([])
   const [id, increaseID] = useID();
 
   const getFromCart = (id: number) => {
@@ -36,6 +36,7 @@ const CartProvider: FC<{children: React.ReactNode}> = ({children}) => {
   const checkoutCart = () => {
     setCart([]);
   }
+
 
   const getTotalPrice = () => {
     const prices = cart.map(item => item.price);
