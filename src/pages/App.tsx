@@ -14,7 +14,7 @@ export default function App() {
     api.getLaptops().then(setLaptops);
   }, []);
 
-  console.log(laptops);
+  console.log(laptops)
 
 
   return (

@@ -52,7 +52,7 @@ export interface Product {
     id: number;
     ean: number;
     name: string;
-    price: number;
+    price: string;
     description: string;
     manufacturer: Manufacturer;
     display: Display;

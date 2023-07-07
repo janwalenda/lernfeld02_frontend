@@ -4,9 +4,13 @@ import Button from "./Button";
 import { ButtonType } from "../types/ButtonType";
 import { CartContextInterface } from "../interfaces/CartContextInterface";
 import { IoCart } from "react-icons/io5";
+import {ModalContext} from "../contexts/ModalContext";
+import { ModalContextInterface } from "../interfaces/ModalContextInterface";
+import { ModalType } from "../types/ModalType";
 
 export default function CartButton() {
     const cart = useContext(CartContext) as CartContextInterface;
+    const modals = useContext(ModalContext) as ModalContextInterface;
     const [cartLength, setLength] = useState(0);
 
     useEffect(() => {
@@ -16,7 +20,7 @@ export default function CartButton() {
 
     const buttonProps = {
         onClick: () => {
-            cart.toggleCart();
+            modals.toggleModal(ModalType.CART_MODAL);
         }
     };
 

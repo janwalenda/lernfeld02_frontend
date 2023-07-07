@@ -8,7 +8,6 @@ export const CartContext = createContext<CartContextInterface| null>(null);
 const CartProvider: FC<{children: React.ReactNode}> = ({children}) => {
   const [cart, setCart] = useState<CartObjectInterface[]>([]);
   const [id, increaseID] = useID();
-  const [cartOpen, setCartOpen] = useState<boolean>(false)
 
   const getFromCart = (id: number) => {
     return cart.find(cartObject => {
@@ -38,10 +37,6 @@ const CartProvider: FC<{children: React.ReactNode}> = ({children}) => {
     setCart([]);
   }
 
-  const toggleCart = () => {
-    setCartOpen(!cartOpen);
-  }
-
   const getTotalPrice = () => {
     const prices = cart.map(item => item.price);
     if(prices.length > 0) {
@@ -54,8 +49,6 @@ const CartProvider: FC<{children: React.ReactNode}> = ({children}) => {
     <CartContext.Provider
       value={{
         cart,
-        cartOpen, 
-        toggleCart, 
         addToCart, 
         getFromCart, 
         removeFromCart,
@@ -68,4 +61,6 @@ const CartProvider: FC<{children: React.ReactNode}> = ({children}) => {
 };
 
 export default CartProvider;
+
+
  
