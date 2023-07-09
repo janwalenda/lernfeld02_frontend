@@ -24,7 +24,6 @@
     &:active {
         background-color: color(slate, 400);
     }
-    
 }
 
 .secondaryButton{
@@ -39,4 +38,25 @@
     &:active {
         background-color: color(slate, 300);
     }
+}
+
+.tertiaryButton{
+    @include buttonBaseStyle();
+    background-color: color(slate, 500);
+    border-style: none;
+    transition: background-color 250ms;
+    &:hover,
+    &:focus,
+    &:active {
+        background-color: color(slate, 400);
+    }
+}
+
+.buttonLeft {
+    display: inline-flex;
+}
+
+.buttonRight {
+    display: inline-flex;
+    float: right;
 }
