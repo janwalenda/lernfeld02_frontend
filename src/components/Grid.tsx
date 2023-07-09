@@ -17,16 +17,19 @@ export function Grid({ columnDefs, rowData }: GridProps) {
           </tr>
         </thead>
         <tbody key="tbodyGrid">
-          {rowData.map(row => (
-            <tr key={row.id}>
-              {columnDefs.map((_, i) => {
-                const values = Object.values(row);
-                return (
-                  <td key={i}>{values[i]}</td>
-                );
-              })}
-            </tr>
-          ))}
+          {rowData.map(row => { 
+            const values = Object.values(row);
+            return (
+              <tr key={row.id}>
+                {columnDefs.map((_, i) => {
+                  const value = values[i]
+                  return (
+                    <td key={value}>{value}</td>
+                  );
+                })}
+              </tr>
+            )
+          })}
         </tbody>
       </table>
     </div>
