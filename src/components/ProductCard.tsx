@@ -12,8 +12,12 @@ import { Product } from "../interfaces/Product";
 export default function PoductCard({ 
     name, 
     price, 
-    id 
-}: Product) {
+    id,
+    boyable = true,
+    description,
+}: Product & {
+    boyable?: boolean
+}) {
     const cart = useContext(CartContext) as CartContextInterface;
     const boxStyle = classNames(
         styles.productCardBox,
@@ -39,16 +43,17 @@ export default function PoductCard({
                 <h3 className={styles.productCardTitle}>
                     {name}
                 </h3>
+                <p>{description}</p>
                 <small className={styles.productCardPrice}>{price}€</small>
             </div>
-            <Button
+            {boyable && <Button
               type={ButtonType.PRIMARY}
               text="Add to Cart"
               rightIcon={<IoAdd/>}
               buttonProps={{
                 onClick: handleButtonClick,
               }}
-            />
+            />}
         </div>
     )
 }

@@ -1,3 +1,4 @@
+import { BasicUserData } from "../interfaces/BasicUserData";
 import { LoginResponse } from "../interfaces/LoginResponse";
 import { Product } from "../interfaces/Product";
 import { RegisterResponse } from "../interfaces/RegisterResponse";
@@ -114,14 +115,39 @@ export class API{
             body: json
         });
 
+        if(request.status !== 200) {
+            const errorResponse = await request.text();
+            throw new Error(`Request failed with status ${request.status}: ${errorResponse}`);
+        }
+
         const response = await request.json();
         return JSON.parse(response);
     }
 
+    public async getUserOrders() {
+        const url = this._generateURL(['order']);
+        const headers = this._createHeaders();
+        const request = await fetch(url, {
+            method: 'GET',
+            redirect: 'follow',
+            headers
+        });
+
+        if(request.status !== 200) {
+            const errorResponse = await request.text();
+            throw new Error(`Request failed with status ${request.status}: ${errorResponse}`);
+        }
+
+        const response = await request.json();
+        return response;
+    }
+
     public async getLaptops() {
         const url = this._generateURL(['laptop']);
+        const user = API.getUser();
+        const json = JSON.stringify(user);
+        const headers = this._createHeaders(json);
 
-        const headers = this._createHeaders();
         const request = await fetch(url,{
             method: 'GET',
             redirect: 'follow',
@@ -132,6 +158,7 @@ export class API{
         return JSON.parse(response) as Product[];
     }
 
+
     public static getToken(): string | null {
         const ls = window.localStorage;
         const user = ls.getItem('user');
@@ -139,6 +166,17 @@ export class API{
             const parsed = JSON.parse(user) as LoginResponse;
             const token = parsed.accessToken;
             return token;
+        }
+        return null;
+    }
+
+    public static getUser(): BasicUserData | null {
+        const ls = window.localStorage;
+        const user = ls.getItem('user');
+        if(typeof user === 'string'){
+            const parsed = JSON.parse(user) as LoginResponse;
+            const userData = parsed.user;
+            return userData;
         }
         return null;
     }

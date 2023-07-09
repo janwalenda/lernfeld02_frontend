@@ -16,10 +16,12 @@ export default function App() {
 
   return (
     <MainLayout>
-      <div className={styles.appPageProductList}>
-        {laptops.map(product => {
-          return <PoductCard {...product} key={product.id} />
-        })}
+      <div className={styles.appPageWrapper}>
+        <div className={styles.appPageProductList}>
+          {laptops.map(product => {
+            return <PoductCard {...product} key={product.id} />
+          })}
+        </div>
       </div>
     </MainLayout>
   )
