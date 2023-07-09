@@ -1,0 +1,30 @@
+@import './theme.scss';
+
+@mixin deviderDefaults(){
+    display: flex;
+    border: 1px solid color('slate', 500);
+}
+
+$sizes: (
+    'full': 100%,
+    '3xl': 90%,
+    '2xl': 80%,
+    'xl': 70%,
+    'half': 50%,
+);
+
+@each $key, $size in $sizes {
+    .verticalDevider#{$key}{
+        @include deviderDefaults();
+        width: 1px;
+        height: $size;
+    }
+
+    .horizontalDevider#{$key}{
+        @include deviderDefaults();
+        width: $size;
+        height: 1px;
+    }
+}
+
+

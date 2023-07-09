@@ -1,0 +1,19 @@
+@import './theme.scss';
+@import './rounded.scss';
+
+.headerContainer{
+    background-color: color('slate', 100);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .headerWrapper {
+        @include rounded('xl');
+        margin: .5rem;
+        display: flex;
+        flex-grow: 1;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        background-color: color('slate', 200);
+    }
+}

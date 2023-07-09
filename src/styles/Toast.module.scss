@@ -1,0 +1,45 @@
+@import './theme.scss';
+@import './rounded.scss';
+
+$types: (
+    'Error': (
+        'background-color': color('red', 100),
+        'border': color('red', 700),
+        'color': color('red', 700),
+    ),
+    'Standard': (
+        'background-color': color('slate', 100),
+        'border': color('slate', 700),
+        'color': color('slate', 700),
+    ),
+    'Success': (
+        'background-color': color('green', 100),
+        'border': color('green', 700),
+        'color': color('green', 700),
+    )
+);
+
+@each $key, $type in $types {
+    .toastWrapper#{$key}{
+        @include rounded(xl);
+        @each $prop, $value in $type {
+            #{$prop}: $value;
+        }
+        border-style: solid;
+        border-width: .2rem;
+        width: 100%;
+        padding: 1rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        header {
+            display: flex;
+            flex-direction: column;
+
+            p{
+                font-size: small;
+            }
+        }
+    }
+}

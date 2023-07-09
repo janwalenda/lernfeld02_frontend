@@ -1,0 +1,42 @@
+@import './theme.scss';
+@import './rounded.scss';
+
+@mixin buttonBaseStyle(){
+    @include rounded(lg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    padding: .5rem;
+    position: relative;
+    & * {
+        display: flex;
+    }
+}
+
+.primaryButton{
+    @include buttonBaseStyle();
+    background-color: color(slate, 500);
+    border-style: none;
+    transition: background-color 250ms;
+    &:hover,
+    &:focus,
+    &:active {
+        background-color: color(slate, 400);
+    }
+    
+}
+
+.secondaryButton{
+    @include buttonBaseStyle();
+    border-style: solid;
+    border-color: color('slate', 500);
+    color: color('slate', 500);
+    background-color: color('slate', 50);
+    transition: background-color 250ms;
+    &:hover,
+    &:focus,
+    &:active {
+        background-color: color(slate, 300);
+    }
+}

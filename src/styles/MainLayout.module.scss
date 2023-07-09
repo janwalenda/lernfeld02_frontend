@@ -1,0 +1,9 @@
+.mainWrapper{
+    display:flex;
+    flex-direction: row;
+    height: 100%;
+    .mainSubWrapper{
+        width: 100%;
+        height: 100%;
+    }
+}

@@ -1,0 +1,9 @@
+@import './theme.scss';
+@import './media.scss';
+@import './rounded.scss';
+
+
+.cartList{
+    height: 100%;
+    overflow-y: scroll;
+}

@@ -1,0 +1,16 @@
+@import './theme.scss';
+@import './rounded.scss';
+
+.buttonGroup {
+    @include rounded(xl);
+    background-color: color('slate', 200);
+    margin: .5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: .3rem;
+    button {
+        margin: .3rem;
+    }
+}
