@@ -27,10 +27,7 @@ export default function Main({ title, children }: LayoutOptions) {
     <>
       <Header />
       <main className={styles.mainWrapper}>
-        <div style={{
-          width: '100%',
-          height: '100%',
-        }}>
+        <div className={styles.mainSubWrapper}>
           {!!title && <h1>{title}</h1>}
           {children}
         </div>

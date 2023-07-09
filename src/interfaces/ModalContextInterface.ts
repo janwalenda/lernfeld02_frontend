@@ -4,4 +4,5 @@ export interface ModalContextInterface {
   //addModal: (id: number) => void;
   isModalOpen: (id: ModalType) => boolean | null;
   toggleModal: (id: ModalType) => void;
+  closeAllModals: () => void;
 }

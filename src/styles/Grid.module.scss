@@ -1,0 +1,28 @@
+@import './theme.scss';
+@import './rounded.scss';
+
+.gridWrapper {
+    width: 100%;
+    padding: 1rem;
+    background-color: color(slate, 100);
+    display: flex;
+
+    table{
+        width: 100%;
+        thead {
+            th {
+                @include rounded(sm);
+                background-color: color(slate, 300);
+                text-align: left;
+                padding: .5rem;
+            }
+        }
+        tbody {
+            &:nth-child(even){
+                td {
+                    background-color: color(slate, 200);
+                }
+            }
+        }
+    }
+}

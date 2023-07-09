@@ -42,8 +42,8 @@ export default function Modal({
   });
 
   return (
-    <aside className={cartStyle}>
-      <div className={styles.modalTitle}>
+    <aside className={cartStyle} key={modalID}>
+      <div className={styles.modalTitle} key={styles.modalTitle}>
         <h1>{title}</h1>
         <Button
           type={ButtonType.SECONDARY}

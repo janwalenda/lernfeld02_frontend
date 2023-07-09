@@ -8,14 +8,18 @@ import { IoBag } from "react-icons/io5";
 import { CartElement } from "./CartElement";
 import { ModalType } from "../types/ModalType";
 import Modal from "./Modal";
+import { useNavigate } from "react-router-dom";
+import { ModalContext } from "../contexts/ModalContext";
+import { ModalContextInterface } from "../interfaces/ModalContextInterface";
 
 
 export default function CartModal() {
   const cart = useContext(CartContext) as CartContextInterface;
+  const modals = useContext(ModalContext) as ModalContextInterface;
   const [isEmpty, setIsEmpty] = useState<boolean>(true);
   const [cartElements, setCardElements] = useState<React.ReactNode[]>([]);
   const [totalPrice, setTotalPrice] = useState<string>('');
-
+  const nav = useNavigate();
 
   useEffect(() => {
     setIsEmpty(cart.cart.length === 0);
@@ -23,7 +27,7 @@ export default function CartModal() {
     const cartMap = cart.cart.map((element) => (
       <CartElement
         element={element}
-        key={element.id}
+        key={element.objectId}
       />
     ));
 
@@ -35,18 +39,30 @@ export default function CartModal() {
     }
   }, [cart, cart.removeFromCart]);
 
+  const handleCheckout = () => {
+    modals.closeAllModals();
+    nav('/checkout');
+  };
+
+  const priceElement = !isEmpty && (<small>Total: {totalPrice}€</small>);
+  const finalCartelements = !isEmpty && cartElements;
+  const emptyMessage = isEmpty && (<span>Your cart is empty!</span>);
+
   return (
     <Modal modalID={ModalType.CART_MODAL} title="Cart">
       <div className={styles.cartList}>
-        {!isEmpty && cartElements}
+        {finalCartelements}
       </div>
-      {!isEmpty && <small>Total: {totalPrice}€</small>}
+      {priceElement}
       {!isEmpty && <Button
         type={ButtonType.PRIMARY}
         text="Checkout"
         rightIcon={<IoBag />}
+        buttonProps={{
+          onClick: handleCheckout,
+        }}
       />}
-      {isEmpty && (<span>Your cart is empty!</span>)}
+      {emptyMessage}
     </Modal>
   );
 }

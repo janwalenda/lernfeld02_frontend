@@ -5,6 +5,24 @@ import { RegisterResponse } from "../interfaces/RegisterResponse";
 export class API{
     private _baseURL = 'http://localhost:3000/api/v1/';
 
+    private _createHeaders(json?: string){
+        const token = API.getToken();
+        const headers =  new Headers();
+
+        if(json){
+            headers.append('Content-Type', 'application/json');
+            headers.append('Content-Length', json.length.toString());
+        }
+        
+        if(typeof token === 'string'){
+            headers.append(
+                'Authorization', 
+                `JWT ${token}`
+            );
+        }
+        return headers;
+    }
+
     private _generateURL(
         slugs: string[], 
         query?: {
@@ -34,10 +52,7 @@ export class API{
         }
         
         const json = API.generateJSONfromFormData(formData);
-        const headers = new Headers({
-            'Content-Type': 'application/json',
-            'Content-Length': json.length.toString(),
-        });
+        const headers = this._createHeaders(json);
         
         const request = await fetch(url, {
             method: 'POST',
@@ -67,10 +82,7 @@ export class API{
         }
         
         const json = API.generateJSONfromFormData(formData);
-        const headers = new Headers({
-            'Content-Type': 'application/json',
-            'Content-Length': json.length.toString(),
-        });
+        const headers = this._createHeaders(json);
 
         const request = await fetch(url, {
             method: 'POST',
@@ -88,13 +100,28 @@ export class API{
         return response;
     }
 
+    public async fullfillOrder(order: number[]){
+        const url = this._generateURL(['order']);
+        const json = JSON.stringify({
+            laptopIds: order,
+        });
+
+        const headers = this._createHeaders(json);
+        const request = await fetch(url, {
+            method: 'POST',
+            redirect: 'follow',
+            headers,
+            body: json
+        });
+
+        const response = await request.json();
+        return JSON.parse(response);
+    }
+
     public async getLaptops() {
         const url = this._generateURL(['laptop']);
 
-        const token = API.getToken();
-        const headers = new Headers({
-            'Authorization': `JWT ${token}`,
-        });
+        const headers = this._createHeaders();
         const request = await fetch(url,{
             method: 'GET',
             redirect: 'follow',

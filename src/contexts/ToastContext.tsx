@@ -1,21 +1,13 @@
 import { createContext, FC, useState } from 'react';
-import { ToastContextType } from '../interfaces/ToastContextType';
+import { ToastContextInterface } from '../interfaces/ToastContextInterface';
 import { Toast } from '../interfaces/Toast';
-import { ToastType } from '../types/ToastType';
+import { useID } from '../hooks/useID';
 
-export const ToastContext = createContext<ToastContextType | null>(null);
+export const ToastContext = createContext<ToastContextInterface | null>(null);
 
 const ToastProvider: FC<{children: React.ReactNode}> = ({ children }) => {
-    const [id, setID] = useState(0);
-    const [toastMessages, setToastMessages] = useState<Toast[]>([
-        {
-            id: id + 1,
-            title: 'Hello',
-            description: 'Schön, das du hier bist',
-            timeout: 3000,
-            type: ToastType.STANDARD,
-        }
-    ]);
+    const [id, increaseID] = useID();
+    const [toastMessages, setToastMessages] = useState<Toast[]>([]);
 
 
     /**
@@ -24,7 +16,6 @@ const ToastProvider: FC<{children: React.ReactNode}> = ({ children }) => {
      * Saves toast to state 
      */
     function saveToast(toast: Toast): void {
-        setID(id + 1);
         const newToast: Toast = {
             id: id,
             title: toast.title,
@@ -32,6 +23,7 @@ const ToastProvider: FC<{children: React.ReactNode}> = ({ children }) => {
             timeout: toast.timeout,
             type: toast.type,
         };
+        increaseID();
         setToastMessages([...toastMessages, newToast]);
     }
 

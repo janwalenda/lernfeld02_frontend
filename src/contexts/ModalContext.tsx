@@ -57,12 +57,21 @@ const ModalProvider: FC<{children: React.ReactNode}> = ({children}) => {
     setModals(newModals);
   }
 
+  function closeAllModals(): void {
+    const newModals = modals.map(mod => {
+      mod.open = false;
+      return mod;
+    });
+    setModals(newModals);
+  }
+
   return (
     <ModalContext.Provider
       value={{
         isModalOpen,
         //addModal,
-        toggleModal
+        toggleModal,
+        closeAllModals
     }}>
       {children}
     </ModalContext.Provider>

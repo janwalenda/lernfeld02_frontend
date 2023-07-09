@@ -3,6 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Workspace from './pages/Workspace';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Checkout from './pages/Checkout';
 
 export const router = createBrowserRouter([
   {
@@ -20,5 +21,9 @@ export const router = createBrowserRouter([
   {
     path: '/register',
     element: <Register />,
+  },
+  {
+    path: '/checkout',
+    element: <Checkout />
   }
 ]);

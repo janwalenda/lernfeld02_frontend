@@ -1,11 +1,11 @@
 import { useState, useContext, useEffect } from 'react';
-import { ToastContextType } from '../interfaces/ToastContextType';
+import { ToastContextInterface } from '../interfaces/ToastContextInterface';
 import { Toast as ToastInterface } from '../interfaces/Toast';
 import { ToastContext } from '../contexts/ToastContext';
 import { Toast } from '../components/Toast';
 
 export const Toaster = () => {
-  const { toasts, deleteToast } = useContext(ToastContext) as ToastContextType;
+  const { toasts, deleteToast } = useContext(ToastContext) as ToastContextInterface;
 
   const [toastElements, setToastElements] = useState<
     JSX.Element[] | null

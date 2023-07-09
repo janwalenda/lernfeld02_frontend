@@ -4,7 +4,7 @@ import {LoginResponse} from '../interfaces/LoginResponse';
 import { API } from '../classes/API';
 import {useLocalStorage} from '../hooks/useLocalStorage';
 import { ToastContext } from './ToastContext';
-import { ToastContextType } from '../interfaces/ToastContextType';
+import { ToastContextInterface } from '../interfaces/ToastContextInterface';
 import { ToastType } from '../types/ToastType';
 import { AuthContextInterface } from '../interfaces/AuthContextInterface';
 
@@ -16,7 +16,7 @@ const AuthProvider: FC<{children: React.ReactNode}> = ({children}) => {
   const {setItem, removeItem, getItem} = useLocalStorage();
   const [loggedIn, setLoggedIn] = useState(!!token);
   const [loginMode, setLoginMode] = useState<boolean>(true);
-  const toast = useContext(ToastContext) as ToastContextType;
+  const toast = useContext(ToastContext) as ToastContextInterface;
 
   const api = new API();
 
@@ -51,6 +51,7 @@ const AuthProvider: FC<{children: React.ReactNode}> = ({children}) => {
   function logout() {
     setUserData(null);
     removeItem('user');
+    removeItem('cart');
     setLoggedIn(false);
   }
 
