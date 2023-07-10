@@ -10,6 +10,8 @@ import shadow from '../styles/Shadow.module.scss';
 import { Product } from "../interfaces/Product";
 import ProductDetails from "./ProductDetails";
 import { ButtonFloat } from "../types/ButtonFloat";
+import Devider from "./Devider";
+import { DeviderDirection } from "../types/DeviderDirection";
 
 export default function PoductCard({ 
     name, 
@@ -62,6 +64,10 @@ export default function PoductCard({
                 <p>{description}</p>
                 <small className={styles.productCardPrice}>{price}€</small>
             </div>
+            <Devider size="full" direction={DeviderDirection.HORIZONTAL} style={{
+                margin: '.4rem 0 .4rem 0',
+                border: 0,
+            }} />
             <div style={{
                 display: 'flex',
                 flexDirection: 'row',
