@@ -62,6 +62,12 @@ export default function PoductCard({
                 <p>{description}</p>
                 <small className={styles.productCardPrice}>{price}€</small>
             </div>
+            <div style={{
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+            }}>
             {boyable && <Button
               type={ButtonType.PRIMARY}
               text="Add to Cart"
@@ -70,16 +76,6 @@ export default function PoductCard({
                 onClick: handleButtonClick,
               }}
             />}
-            <div>
-                <Button
-                type={ButtonType.PRIMARY}
-                text="Add to Cart"
-                float={ButtonFloat.LEFT}
-                rightIcon={<IoAdd/>}
-                buttonProps={{
-                    onClick: handleButtonClick,
-                }}
-                />
                 <Button 
                 type={ButtonType.TERTIARY}
                 text="Details"
