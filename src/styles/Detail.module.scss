@@ -1,0 +1,45 @@
+@import './theme.scss';
+@import './media.scss';
+@import './rounded.scss';
+
+.detailOpen {
+    @include rounded('xl');
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 1rem;
+    top: 5rem;
+    width: 30%;
+    background-color: color('slate', 50);
+    padding: 20px;
+    max-height: 70%;
+    .cartTitle{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        &:nth-child(0){
+            display: flex;
+            flex-grow: 1;
+        }
+    }
+    .cartList{
+        height: 100%;
+        overflow-y: scroll;
+    }
+
+    @include xs() {
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+        width: 100vw;
+        right: 0px;
+        top:0px;
+        height: 100vh;
+    }
+}
+
+
+.cartClosed {
+    display: none;
+}
